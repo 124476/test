@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Skor_SQL_2024_REG_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Skor_SQL_2024_REG_2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Diagnoz" EntityType="Skor_SQL_2024_REG_2Model.Diagnoz" />
+    <EntitySet Name="Doctor" EntityType="Skor_SQL_2024_REG_2Model.Doctor" />
+    <EntitySet Name="Gospital" EntityType="Skor_SQL_2024_REG_2Model.Gospital" />
+    <EntitySet Name="Meropriation" EntityType="Skor_SQL_2024_REG_2Model.Meropriation" />
+    <EntitySet Name="Otdel" EntityType="Skor_SQL_2024_REG_2Model.Otdel" />
+    <EntitySet Name="Pacient" EntityType="Skor_SQL_2024_REG_2Model.Pacient" />
+    <EntitySet Name="Place" EntityType="Skor_SQL_2024_REG_2Model.Place" />
+    <EntitySet Name="Pol" EntityType="Skor_SQL_2024_REG_2Model.Pol" />
+    <EntitySet Name="Result" EntityType="Skor_SQL_2024_REG_2Model.Result" />
+    <EntitySet Name="sysdiagrams" EntityType="Skor_SQL_2024_REG_2Model.sysdiagrams" />
+    <EntitySet Name="Tip" EntityType="Skor_SQL_2024_REG_2Model.Tip" />
+    <EntitySet Name="Yslovie" EntityType="Skor_SQL_2024_REG_2Model.Yslovie" />
+    <AssociationSet Name="FK_Pacient_Diagnoz" Association="Skor_SQL_2024_REG_2Model.FK_Pacient_Diagnoz">
+      <End Role="Diagnoz" EntitySet="Diagnoz" />
+      <End Role="Pacient" EntitySet="Pacient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Otdel" Association="Skor_SQL_2024_REG_2Model.FK_Doctor_Otdel">
+      <End Role="Otdel" EntitySet="Otdel" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Doctor" Association="Skor_SQL_2024_REG_2Model.FK_Place_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gospital_Otdel" Association="Skor_SQL_2024_REG_2Model.FK_Gospital_Otdel">
+      <End Role="Otdel" EntitySet="Otdel" />
+      <End Role="Gospital" EntitySet="Gospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gospital_Pacient" Association="Skor_SQL_2024_REG_2Model.FK_Gospital_Pacient">
+      <End Role="Pacient" EntitySet="Pacient" />
+      <End Role="Gospital" EntitySet="Gospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gospital_Yslovie" Association="Skor_SQL_2024_REG_2Model.FK_Gospital_Yslovie">
+      <End Role="Yslovie" EntitySet="Yslovie" />
+      <End Role="Gospital" EntitySet="Gospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Meropriation" Association="Skor_SQL_2024_REG_2Model.FK_Place_Meropriation">
+      <End Role="Meropriation" EntitySet="Meropriation" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pacient_Pol" Association="Skor_SQL_2024_REG_2Model.FK_Pacient_Pol">
+      <End Role="Pol" EntitySet="Pol" />
+      <End Role="Pacient" EntitySet="Pacient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Pacient" Association="Skor_SQL_2024_REG_2Model.FK_Place_Pacient">
+      <End Role="Pacient" EntitySet="Pacient" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Result" Association="Skor_SQL_2024_REG_2Model.FK_Place_Result">
+      <End Role="Result" EntitySet="Result" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Tip" Association="Skor_SQL_2024_REG_2Model.FK_Place_Tip">
+      <End Role="Tip" EntitySet="Tip" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Diagnoz">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pacient" Relationship="Skor_SQL_2024_REG_2Model.FK_Pacient_Diagnoz" FromRole="Diagnoz" ToRole="Pacient" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Otech" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OtdelId" Type="Int32" />
+    <NavigationProperty Name="Otdel" Relationship="Skor_SQL_2024_REG_2Model.FK_Doctor_Otdel" FromRole="Doctor" ToRole="Otdel" />
+    <NavigationProperty Name="Place" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Doctor" FromRole="Doctor" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Gospital">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Chel" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OtdelId" Type="Int32" />
+    <Property Name="YslovieId" Type="Int32" />
+    <Property Name="DateStart" Type="DateTime" Precision="0" />
+    <Property Name="IsCan" Type="Boolean" />
+    <Property Name="Prich" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PacientId" Type="Int32" />
+    <Property Name="DateEnd" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Otdel" Relationship="Skor_SQL_2024_REG_2Model.FK_Gospital_Otdel" FromRole="Gospital" ToRole="Otdel" />
+    <NavigationProperty Name="Pacient" Relationship="Skor_SQL_2024_REG_2Model.FK_Gospital_Pacient" FromRole="Gospital" ToRole="Pacient" />
+    <NavigationProperty Name="Yslovie" Relationship="Skor_SQL_2024_REG_2Model.FK_Gospital_Yslovie" FromRole="Gospital" ToRole="Yslovie" />
+  </EntityType>
+  <EntityType Name="Meropriation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Place" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Meropriation" FromRole="Meropriation" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Otdel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Doctor" Relationship="Skor_SQL_2024_REG_2Model.FK_Doctor_Otdel" FromRole="Otdel" ToRole="Doctor" />
+    <NavigationProperty Name="Gospital" Relationship="Skor_SQL_2024_REG_2Model.FK_Gospital_Otdel" FromRole="Otdel" ToRole="Gospital" />
+  </EntityType>
+  <EntityType Name="Pacient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Otech" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NumSeria" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="DateBorn" Type="DateTime" Precision="0" />
+    <Property Name="PolId" Type="Int32" />
+    <Property Name="Adress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Card" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DateStart" Type="DateTime" Precision="0" />
+    <Property Name="DateEnd" Type="DateTime" Precision="0" />
+    <Property Name="DateNext" Type="DateTime" Precision="0" />
+    <Property Name="Polis" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DatePolis" Type="DateTime" Precision="0" />
+    <Property Name="DiagnozId" Type="Int32" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Diagnoz" Relationship="Skor_SQL_2024_REG_2Model.FK_Pacient_Diagnoz" FromRole="Pacient" ToRole="Diagnoz" />
+    <NavigationProperty Name="Gospital" Relationship="Skor_SQL_2024_REG_2Model.FK_Gospital_Pacient" FromRole="Pacient" ToRole="Gospital" />
+    <NavigationProperty Name="Pol" Relationship="Skor_SQL_2024_REG_2Model.FK_Pacient_Pol" FromRole="Pacient" ToRole="Pol" />
+    <NavigationProperty Name="Place" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Pacient" FromRole="Pacient" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PacientId" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="DoctorId" Type="Int32" />
+    <Property Name="TipId" Type="Int32" />
+    <Property Name="MeropriationId" Type="Int32" />
+    <Property Name="ResultId" Type="Int32" />
+    <Property Name="Recomendation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Doctor" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Doctor" FromRole="Place" ToRole="Doctor" />
+    <NavigationProperty Name="Meropriation" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Meropriation" FromRole="Place" ToRole="Meropriation" />
+    <NavigationProperty Name="Pacient" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Pacient" FromRole="Place" ToRole="Pacient" />
+    <NavigationProperty Name="Result" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Result" FromRole="Place" ToRole="Result" />
+    <NavigationProperty Name="Tip" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Tip" FromRole="Place" ToRole="Tip" />
+  </EntityType>
+  <EntityType Name="Pol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pacient" Relationship="Skor_SQL_2024_REG_2Model.FK_Pacient_Pol" FromRole="Pol" ToRole="Pacient" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Place" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Result" FromRole="Result" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tip">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Place" Relationship="Skor_SQL_2024_REG_2Model.FK_Place_Tip" FromRole="Tip" ToRole="Place" />
+  </EntityType>
+  <EntityType Name="Yslovie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Gospital" Relationship="Skor_SQL_2024_REG_2Model.FK_Gospital_Yslovie" FromRole="Yslovie" ToRole="Gospital" />
+  </EntityType>
+  <Association Name="FK_Pacient_Diagnoz">
+    <End Type="Skor_SQL_2024_REG_2Model.Diagnoz" Role="Diagnoz" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Pacient" Role="Pacient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diagnoz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pacient">
+        <PropertyRef Name="DiagnozId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Otdel">
+    <End Type="Skor_SQL_2024_REG_2Model.Otdel" Role="Otdel" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Doctor" Role="Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="OtdelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Doctor">
+    <End Type="Skor_SQL_2024_REG_2Model.Doctor" Role="Doctor" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Place" Role="Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gospital_Otdel">
+    <End Type="Skor_SQL_2024_REG_2Model.Otdel" Role="Otdel" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Gospital" Role="Gospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gospital">
+        <PropertyRef Name="OtdelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gospital_Pacient">
+    <End Type="Skor_SQL_2024_REG_2Model.Pacient" Role="Pacient" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Gospital" Role="Gospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gospital">
+        <PropertyRef Name="PacientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gospital_Yslovie">
+    <End Type="Skor_SQL_2024_REG_2Model.Yslovie" Role="Yslovie" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Gospital" Role="Gospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yslovie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gospital">
+        <PropertyRef Name="YslovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Meropriation">
+    <End Type="Skor_SQL_2024_REG_2Model.Meropriation" Role="Meropriation" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Place" Role="Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meropriation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="MeropriationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pacient_Pol">
+    <End Type="Skor_SQL_2024_REG_2Model.Pol" Role="Pol" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Pacient" Role="Pacient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pacient">
+        <PropertyRef Name="PolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Pacient">
+    <End Type="Skor_SQL_2024_REG_2Model.Pacient" Role="Pacient" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Place" Role="Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="PacientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Result">
+    <End Type="Skor_SQL_2024_REG_2Model.Result" Role="Result" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Place" Role="Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Result">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="ResultId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Tip">
+    <End Type="Skor_SQL_2024_REG_2Model.Tip" Role="Tip" Multiplicity="0..1" />
+    <End Type="Skor_SQL_2024_REG_2Model.Place" Role="Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tip">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="TipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

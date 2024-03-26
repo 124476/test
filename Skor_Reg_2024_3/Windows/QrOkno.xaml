@@ -1,0 +1,15 @@
+﻿<Window x:Class="Skor_Reg_2024_3.Windows.QrOkno"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Skor_Reg_2024_3.Windows"
+        mc:Ignorable="d"
+        Title="QrOkno" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+            <Image Name="QrI" Height="200" Width="200"></Image>
+            <Button x:Name="Save" Content="Скачать" FontSize="17" Click="Save_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

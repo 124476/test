@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Skor_SQL_2024_REG_2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Diagnoz">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="150" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Otech" Type="nvarchar" MaxLength="150" />
+    <Property Name="OtdelId" Type="int" />
+  </EntityType>
+  <EntityType Name="Gospital">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Chel" Type="nvarchar" MaxLength="150" />
+    <Property Name="OtdelId" Type="int" />
+    <Property Name="YslovieId" Type="int" />
+    <Property Name="DateStart" Type="date" />
+    <Property Name="IsCan" Type="bit" />
+    <Property Name="Prich" Type="nvarchar" MaxLength="150" />
+    <Property Name="PacientId" Type="int" />
+    <Property Name="DateEnd" Type="date" />
+  </EntityType>
+  <EntityType Name="Meropriation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Otdel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Pacient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="150" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Otech" Type="nvarchar" MaxLength="150" />
+    <Property Name="NumSeria" Type="nvarchar" MaxLength="8" />
+    <Property Name="DateBorn" Type="date" />
+    <Property Name="PolId" Type="int" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="200" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Card" Type="nvarchar" MaxLength="150" />
+    <Property Name="DateStart" Type="date" />
+    <Property Name="DateEnd" Type="date" />
+    <Property Name="DateNext" Type="date" />
+    <Property Name="Polis" Type="nvarchar" MaxLength="150" />
+    <Property Name="DatePolis" Type="date" />
+    <Property Name="DiagnozId" Type="int" />
+    <Property Name="Photo" Type="image" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PacientId" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="DoctorId" Type="int" />
+    <Property Name="TipId" Type="int" />
+    <Property Name="MeropriationId" Type="int" />
+    <Property Name="ResultId" Type="int" />
+    <Property Name="Recomendation" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Pol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tip">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Yslovie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <Association Name="FK_Doctor_Otdel">
+    <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="OtdelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gospital_Otdel">
+    <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
+    <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gospital">
+        <PropertyRef Name="OtdelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gospital_Pacient">
+    <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+    <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gospital">
+        <PropertyRef Name="PacientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gospital_Yslovie">
+    <End Role="Yslovie" Type="Self.Yslovie" Multiplicity="0..1" />
+    <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yslovie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gospital">
+        <PropertyRef Name="YslovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pacient_Diagnoz">
+    <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="0..1" />
+    <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diagnoz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pacient">
+        <PropertyRef Name="DiagnozId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pacient_Pol">
+    <End Role="Pol" Type="Self.Pol" Multiplicity="0..1" />
+    <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pacient">
+        <PropertyRef Name="PolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Meropriation">
+    <End Role="Meropriation" Type="Self.Meropriation" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meropriation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="MeropriationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Pacient">
+    <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="PacientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Result">
+    <End Role="Result" Type="Self.Result" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Result">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="ResultId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Tip">
+    <End Role="Tip" Type="Self.Tip" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tip">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="TipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище Skor_SQL_2024_REG_2ModelContainer">
+    <EntitySet Name="Diagnoz" EntityType="Self.Diagnoz" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gospital" EntityType="Self.Gospital" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Meropriation" EntityType="Self.Meropriation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Otdel" EntityType="Self.Otdel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pol" EntityType="Self.Pol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yslovie" EntityType="Self.Yslovie" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Doctor_Otdel" Association="Self.FK_Doctor_Otdel">
+      <End Role="Otdel" EntitySet="Otdel" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gospital_Otdel" Association="Self.FK_Gospital_Otdel">
+      <End Role="Otdel" EntitySet="Otdel" />
+      <End Role="Gospital" EntitySet="Gospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gospital_Pacient" Association="Self.FK_Gospital_Pacient">
+      <End Role="Pacient" EntitySet="Pacient" />
+      <End Role="Gospital" EntitySet="Gospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gospital_Yslovie" Association="Self.FK_Gospital_Yslovie">
+      <End Role="Yslovie" EntitySet="Yslovie" />
+      <End Role="Gospital" EntitySet="Gospital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pacient_Diagnoz" Association="Self.FK_Pacient_Diagnoz">
+      <End Role="Diagnoz" EntitySet="Diagnoz" />
+      <End Role="Pacient" EntitySet="Pacient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pacient_Pol" Association="Self.FK_Pacient_Pol">
+      <End Role="Pol" EntitySet="Pol" />
+      <End Role="Pacient" EntitySet="Pacient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Doctor" Association="Self.FK_Place_Doctor">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Meropriation" Association="Self.FK_Place_Meropriation">
+      <End Role="Meropriation" EntitySet="Meropriation" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Pacient" Association="Self.FK_Place_Pacient">
+      <End Role="Pacient" EntitySet="Pacient" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Result" Association="Self.FK_Place_Result">
+      <End Role="Result" EntitySet="Result" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Tip" Association="Self.FK_Place_Tip">
+      <End Role="Tip" EntitySet="Tip" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

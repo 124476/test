@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c751b6470b6b4a9b839b9b726c765311" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Diagnoz" Width="1.5" PointX="1.5" PointY="16.5" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Doctor" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Gospital" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Meropriation" Width="1.5" PointX="3" PointY="19.625" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Otdel" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Pacient" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Place" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Pol" Width="1.5" PointX="1.5" PointY="14.25" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Result" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Tip" Width="1.5" PointX="3" PointY="11.25" />
+        <EntityTypeShape EntityType="Skor_SQL_2024_REG_2Model.Yslovie" Width="1.5" PointX="0.75" PointY="1.25" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Pacient_Diagnoz" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Doctor_Otdel" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Place_Doctor" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Gospital_Otdel" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Gospital_Pacient" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Gospital_Yslovie" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Place_Meropriation" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Pacient_Pol" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Place_Pacient" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Place_Result" />
+        <AssociationConnector Association="Skor_SQL_2024_REG_2Model.FK_Place_Tip" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
